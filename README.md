@@ -78,7 +78,6 @@ Brain-Tumor-Detection/
 │
 ├── Classification (CNN).ipynb
 ├── Segmentation (MONAI).ipynb
-├── MONAI__Conference.pdf
 ├── README.md
 │
 ├── models/
@@ -105,6 +104,67 @@ Brain-Tumor-Detection/
 ```
 
 > The notebooks currently contain local Windows dataset paths. Update these paths before running the notebooks on another machine.
+
+---
+
+# 📂 Datasets
+
+This project uses two publicly available datasets, with a separate dataset selected for each modeling approach.
+
+## 🧠 Classification Dataset — Br35H Brain Tumor Detection
+
+The CNN classification pipeline uses the **Br35H Brain Tumor Detection** dataset available on Kaggle.
+
+**Source:** Ahmed Hamada — Brain Tumor Detection (Br35H)
+
+🔗 https://www.kaggle.com/datasets/ahmedhamada0/brain-tumor-detection
+
+The dataset provides brain MRI images for **tumor/non-tumor classification** and is used as the image-level classification dataset for the CNN pipeline. 
+
+The images are processed as 2D grayscale inputs before being passed to the CNN.
+
+### Used for
+
+- Binary brain tumor classification
+- CNN training and validation
+- CNN test evaluation
+- SHAP, LIME, and Grad-CAM explanations
+
+---
+
+## 🧩 Segmentation Dataset — Medical Segmentation Decathlon
+
+The MONAI segmentation pipeline uses **Task01_BrainTumour** from the **Medical Segmentation Decathlon (MSD)**.
+
+**Source:** Medical Segmentation Decathlon
+
+🔗 http://medicaldecathlon.com/
+
+The Brain Tumours task contains **3D multimodal MRI volumes** with segmentation annotations. The official dataset describes the task as glioma segmentation involving necrotic/active tumor and edema, with data derived from the BraTS 2016 and 2017 datasets.
+
+### Used for
+
+- 3D brain MRI processing
+- MONAI-based segmentation
+- 3D U-Net training
+- Tumor-region localization
+- Dice-based segmentation evaluation
+
+### Dataset Format
+
+The Medical Segmentation Decathlon dataset follows a structure containing image volumes and corresponding training labels:
+
+```text
+Task01_BrainTumour/
+├── dataset.json
+├── imagesTr/
+├── imagesTs/
+└── labelsTr/
+```
+
+The segmentation data is provided as volumetric medical images and is suitable for 3D semantic segmentation workflows.
+
+> **Note:** The classification and segmentation pipelines use different datasets because they address different tasks and require different forms of ground-truth annotation: image-level labels for classification and voxel-level segmentation masks for segmentation.
 
 ---
 
